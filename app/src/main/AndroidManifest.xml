@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ca.bcit.ass3.vu_wang">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CreateEvent"></activity>
+        <activity android:name=".ItemList"></activity>
+        <activity android:name=".CreateItem"/>
+        <activity android:name=".ItemDetails"></activity>
+        <activity android:name=".AndroidDatabaseManager"></activity>
+        <activity android:name=".EditItem"></activity>
+        <activity android:name=".EditEvent"></activity>
+        <activity android:name=".SearchedEvents"></activity>
+        <activity android:name=".SearchForEvent"></activity>
+        <activity android:name=".ChooseContributionEvent"></activity>
+        <activity android:name=".ChooseContributionItem"></activity>
+        <activity android:name=".Contribution"></activity>
+    </application>
+
+</manifest>
