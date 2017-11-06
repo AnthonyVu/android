@@ -1,5 +1,6 @@
 package ca.bcit.ass3.vu_wang;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.MatrixCursor;
@@ -49,9 +50,67 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (oldVersion < 1) {
                 db.execSQL(CreateEventMasterTable());
                 db.execSQL(CreateEventDetailTable());
+                seedData(db);
             }
         } catch (SQLException sqle) {
         }
+    }
+
+    private void seedData(SQLiteDatabase db) {
+        ContentValues values = new ContentValues();
+        values.put(EVENTNAME, "Pot Luck Christmas Party");
+        values.put(EVENTDATE, "December 25, 2017");
+        values.put(EVENTTIME, "6:00 PM");
+        db.insert(MASTER, null, values);
+
+        values.clear();
+        values.put(ITEMNAME, "Paper plates");
+        values.put(ITEMUNIT, "Pieces");
+        values.put(ITEMQUANTITY, "20");
+        values.put(EVENTID, "1");
+        db.insert(DETAIL, null, values);
+
+        values.clear();
+        values.put(ITEMNAME, "Paper cups");
+        values.put(ITEMUNIT, "Pieces");
+        values.put(ITEMQUANTITY, "30");
+        values.put(EVENTID, "1");
+        db.insert(DETAIL, null, values);
+
+        values.clear();
+        values.put(ITEMNAME, "Napkins");
+        values.put(ITEMUNIT, "Pieces");
+        values.put(ITEMQUANTITY, "100");
+        values.put(EVENTID, "1");
+        db.insert(DETAIL, null, values);
+
+        values.clear();
+        values.put(ITEMNAME, "Beer");
+        values.put(ITEMUNIT, "6 packs");
+        values.put(ITEMQUANTITY, "5");
+        values.put(EVENTID, "1");
+        db.insert(DETAIL, null, values);
+
+        values.clear();
+        values.put(ITEMNAME, "Pop");
+        values.put(ITEMUNIT, "2 Liter Bottles");
+        values.put(ITEMQUANTITY, "3");
+        values.put(EVENTID, "1");
+        db.insert(DETAIL, null, values);
+
+        values.clear();
+        values.put(ITEMNAME, "Pizza");
+        values.put(ITEMUNIT, "Large");
+        values.put(ITEMQUANTITY, "3");
+        values.put(EVENTID, "1");
+        db.insert(DETAIL, null, values);
+
+        values.clear();
+        values.put(ITEMNAME, "Peanuts");
+        values.put(ITEMUNIT, "Grams");
+        values.put(ITEMQUANTITY, "200");
+        values.put(EVENTID, "1");
+        db.insert(DETAIL, null, values);
     }
 
     private String CreateEventMasterTable() {
@@ -77,46 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return sql;
     }
 
-    public ArrayList<Cursor> getData(String query) {
-        //get writable database
-        SQLiteDatabase sqlDB = this.getWritableDatabase();
-        String[] columns = new String[]{"message"};
-        //an array list of cursor to save two cursors one has results from the query
-        //other cursor stores error message if any errors are triggered
-        ArrayList<Cursor> alc = new ArrayList<Cursor>(2);
-        MatrixCursor Cursor2 = new MatrixCursor(columns);
-        alc.add(null);
-        alc.add(null);
+    private void seedData() {
 
-        try {
-            //execute the query results will be save in Cursor c
-            Cursor c = sqlDB.rawQuery(query, null);
-
-            //add value to cursor2
-            Cursor2.addRow(new Object[]{"Success"});
-
-            alc.set(1, Cursor2);
-            if (null != c && c.getCount() > 0) {
-
-                alc.set(0, c);
-                c.moveToFirst();
-
-                return alc;
-            }
-            return alc;
-        } catch (SQLException sqlEx) {
-            Log.d("printing exception", sqlEx.getMessage());
-            //if any exceptions are triggered save the error message to cursor an return the arraylist
-            Cursor2.addRow(new Object[]{"" + sqlEx.getMessage()});
-            alc.set(1, Cursor2);
-            return alc;
-        } catch (Exception ex) {
-            Log.d("printing exception", ex.getMessage());
-
-            //if any exceptions are triggered save the error message to cursor an return the arraylist
-            Cursor2.addRow(new Object[]{"" + ex.getMessage()});
-            alc.set(1, Cursor2);
-            return alc;
-        }
     }
 }
