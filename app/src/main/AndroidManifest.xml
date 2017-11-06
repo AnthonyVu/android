@@ -20,7 +20,6 @@
         <activity android:name=".ItemList"></activity>
         <activity android:name=".CreateItem"/>
         <activity android:name=".ItemDetails"></activity>
-        <activity android:name=".AndroidDatabaseManager"></activity>
         <activity android:name=".EditItem"></activity>
         <activity android:name=".EditEvent"></activity>
         <activity android:name=".SearchedEvents"></activity>

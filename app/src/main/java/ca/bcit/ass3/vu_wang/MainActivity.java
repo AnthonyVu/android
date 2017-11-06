@@ -56,14 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        viewDatabaseButton = (Button)findViewById(R.id.viewDatabaseButton);
-        viewDatabaseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), AndroidDatabaseManager.class);
-                startActivity(i);
-            }
-        });
     }
 
     @Override

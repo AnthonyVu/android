@@ -49,9 +49,9 @@ public class ItemDetails extends AppCompatActivity {
         quantity = getIntent().getStringExtra(ITEM_QUANTITY);
         eventId = getIntent().getStringExtra(ITEM_EVENT_ID);
 
-        itemName.setText(getResources().getString(R.string.item) + ": " + name);
-        itemUnit.setText(getResources().getString(R.string.unit) + ": " + unit);
-        itemQuantity.setText(getResources().getString(R.string.quantity) + ": " + quantity);
+        itemName.setText(getResources().getString(R.string.itemLocale) + ": " + name);
+        itemUnit.setText(getResources().getString(R.string.unitLocale) + ": " + unit);
+        itemQuantity.setText(getResources().getString(R.string.quantityLocale) + ": " + quantity);
 
         deleteItemButton.setOnClickListener(new View.OnClickListener() {
             @Override

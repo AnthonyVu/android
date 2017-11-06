@@ -72,11 +72,11 @@ public class ItemList extends AppCompatActivity {
             }
         });
         eventName = (TextView)findViewById(R.id.eventName);
-        eventName.setText(getResources().getString(R.string.eventName) + ": " + getIntent().getStringExtra(EVENT_NAME));
+        eventName.setText(getResources().getString(R.string.eventNameLocale) + ": " + getIntent().getStringExtra(EVENT_NAME));
         eventDate = (TextView)findViewById(R.id.eventDate);
-        eventDate.setText(getResources().getString(R.string.date) + ": " + getIntent().getStringExtra(EVENT_DATE));
+        eventDate.setText(getResources().getString(R.string.eventDateLocale) + ": " + getIntent().getStringExtra(EVENT_DATE));
         eventTime = (TextView)findViewById(R.id.eventTime);
-        eventTime.setText(getResources().getString(R.string.time) + ": " + getIntent().getStringExtra(EVENT_TIME));
+        eventTime.setText(getResources().getString(R.string.eventTimeLocale) + ": " + getIntent().getStringExtra(EVENT_TIME));
         food_items = (ListView)findViewById(R.id.foodItems);
         food_items.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
