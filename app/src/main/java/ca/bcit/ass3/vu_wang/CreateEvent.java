@@ -16,10 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-/**
- * Created by Anthony Vu on 10/30/2017.
- */
-
 public class CreateEvent extends AppCompatActivity {
     private SQLiteDatabase db;
     private EditText name;

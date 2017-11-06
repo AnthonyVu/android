@@ -7,17 +7,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/itemName"
-        android:hint="@string/item"/>
+        android:hint="@string/itemLocale"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/unit"
-        android:hint="@string/unit"/>
+        android:hint="@string/unitLocale"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/quantity"
-        android:hint="@string/quantity"/>
+        android:hint="@string/quantityLocale"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

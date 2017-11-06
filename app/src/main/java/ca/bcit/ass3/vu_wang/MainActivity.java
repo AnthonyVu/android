@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         SQLiteOpenHelper helper = new DatabaseHelper(this);
         db = helper.getReadableDatabase();
         cursor = db.query(DatabaseHelper.MASTER,
-                new String[]{DatabaseHelper.ID, DatabaseHelper.EVENTNAME},
+                new String[]{DatabaseHelper.ID,DatabaseHelper.EVENTNAME},
                 null,
                 null,
                 null, null, null);

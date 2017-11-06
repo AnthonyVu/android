@@ -12,10 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-/**
- * Created by Anthony Vu on 11/1/2017.
- */
-
 public class ItemDetails extends AppCompatActivity {
     public static final String ITEM_ID = "itemDetails.id";
     public static final String ITEM_NAME = "itemDetails.name";

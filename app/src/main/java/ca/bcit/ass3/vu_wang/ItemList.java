@@ -16,10 +16,6 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-/**
- * Created by Anthony Vu on 10/30/2017.
- */
-
 public class ItemList extends AppCompatActivity {
     public static final String ID = "test.id";
     public static final String EVENT_NAME = "test.name";
@@ -47,7 +43,7 @@ public class ItemList extends AppCompatActivity {
         setContentView(R.layout.activity_item_list);
         helper = new DatabaseHelper(this);
         id = getIntent().getLongExtra(ID, 0);
-        addButton = (Button)findViewById(R.id.addButton);
+        addButton = (Button) findViewById(R.id.addButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +52,7 @@ public class ItemList extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        deleteEventButton = (Button)findViewById(R.id.deleteEventButton);
+        deleteEventButton = (Button) findViewById(R.id.deleteEventButton);
         deleteEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,12 +61,12 @@ public class ItemList extends AppCompatActivity {
                 finish();
             }
         });
-        editButton = (Button)findViewById(R.id.editButton);
+        editButton = (Button) findViewById(R.id.editButton);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), EditEvent.class);
-                i.putExtra(EditEvent.EVENT_ID, id+"");
+                i.putExtra(EditEvent.EVENT_ID, id + "");
                 startActivity(i);
                 finish();
             }
@@ -101,7 +97,7 @@ public class ItemList extends AppCompatActivity {
                     quantity = cursor.getString(3);
                     eventId = cursor.getString(4);
                 }
-                intent.putExtra(ItemDetails.ITEM_ID, l +"");
+                intent.putExtra(ItemDetails.ITEM_ID, l + "");
                 intent.putExtra(ItemDetails.ITEM_NAME, name);
                 intent.putExtra(ItemDetails.ITEM_UNIT, unit);
                 intent.putExtra(ItemDetails.ITEM_QUANTITY, quantity);
@@ -110,6 +106,7 @@ public class ItemList extends AppCompatActivity {
             }
         });
     }
+
     @Override
     protected void onResume() {
         super.onResume();

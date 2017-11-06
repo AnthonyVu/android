@@ -16,10 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-/**
- * Created by Anthony Vu on 11/1/2017.
- */
-
 public class EditEvent extends AppCompatActivity {
     public static final String EVENT_ID = "EditEvent.eventId";
 
