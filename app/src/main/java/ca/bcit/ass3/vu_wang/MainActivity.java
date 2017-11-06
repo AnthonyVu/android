@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, ItemList.class);
                 db = helper.getReadableDatabase();
                 cursor = db.query("EVENT_MASTER",
-                        new String[] {"_id", "Name", "Date", "Time"},
+                        new String[]{"_id", "Name", "Date", "Time"},
                         "_id = ?",
-                        new String[] {l+""},
+                        new String[]{l + ""},
                         null, null, null);
 
                 // move to the first record
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        viewDatabaseButton = (Button)findViewById(R.id.viewDatabaseButton);
+        viewDatabaseButton = (Button) findViewById(R.id.viewDatabaseButton);
         viewDatabaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_1,
                 cursor,
-                new String[] {"Name"},
-                new int[] {android.R.id.text1});
+                new String[]{"Name"},
+                new int[]{android.R.id.text1});
         list_events.setAdapter(adapter);
     }
 

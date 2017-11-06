@@ -16,10 +16,6 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-/**
- * Created by Anthony Vu on 10/30/2017.
- */
-
 public class ItemList extends AppCompatActivity {
     public static final String ID = "test.id";
     public static final String EVENT_NAME = "test.name";
@@ -47,7 +43,7 @@ public class ItemList extends AppCompatActivity {
         setContentView(R.layout.activity_item_list);
         helper = new DatabaseHelper(this);
         id = getIntent().getLongExtra(ID, 0);
-        addButton = (Button)findViewById(R.id.addButton);
+        addButton = (Button) findViewById(R.id.addButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,41 +52,44 @@ public class ItemList extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        deleteEventButton = (Button)findViewById(R.id.deleteEventButton);
+        deleteEventButton = (Button) findViewById(R.id.deleteEventButton);
         deleteEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.delete("EVENT_MASTER", "_id = ?", new String[]{id+""});
-                db.delete("EVENT_DETAIL", "eventId = ?", new String[]{id+""});
+                db.delete("EVENT_MASTER", "_id = ?", new String[]{id + ""});
+                db.delete("EVENT_DETAIL", "eventId = ?", new String[]{id + ""});
                 finish();
             }
         });
-        editButton = (Button)findViewById(R.id.editButton);
+        editButton = (Button) findViewById(R.id.editButton);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), EditEvent.class);
-                i.putExtra(EditEvent.EVENT_ID, id+"");
+                i.putExtra(EditEvent.EVENT_ID, id + "");
                 startActivity(i);
                 finish();
             }
         });
-        eventName = (TextView)findViewById(R.id.eventName);
-        eventName.setText("Event Name: " + getIntent().getStringExtra(EVENT_NAME));
-        eventDate = (TextView)findViewById(R.id.eventDate);
-        eventDate.setText("Date: " + getIntent().getStringExtra(EVENT_DATE));
-        eventTime = (TextView)findViewById(R.id.eventTime);
-        eventTime.setText("Time: " + getIntent().getStringExtra(EVENT_TIME));
-        food_items = (ListView)findViewById(R.id.foodItems);
+        eventName = (TextView) findViewById(R.id.eventName);
+        eventName.setText(String.format(getResources().getString(R.string.eventNameLocale),
+                getIntent().getStringExtra(EVENT_NAME)));
+        eventDate = (TextView) findViewById(R.id.eventDate);
+        eventDate.setText(String.format(getResources().getString(R.string.eventDateLocale),
+                getIntent().getStringExtra(EVENT_DATE)));
+        eventTime = (TextView) findViewById(R.id.eventTime);
+        eventTime.setText(String.format(getResources().getString(R.string.eventTimeLocale),
+                getIntent().getStringExtra(EVENT_TIME)));
+        food_items = (ListView) findViewById(R.id.foodItems);
         food_items.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(ItemList.this, ItemDetails.class);
                 db = helper.getReadableDatabase();
                 cursor = db.query("EVENT_DETAIL",
-                        new String[] {"_id", "itemName", "Unit", "Quantity", "eventId"},
+                        new String[]{"_id", "itemName", "Unit", "Quantity", "eventId"},
                         "_id = ?",
-                        new String[] {l+""},
+                        new String[]{l + ""},
                         null, null, null);
 
                 // move to the first record
@@ -101,7 +100,7 @@ public class ItemList extends AppCompatActivity {
                     quantity = cursor.getString(3);
                     eventId = cursor.getString(4);
                 }
-                intent.putExtra(ItemDetails.ITEM_ID, l +"");
+                intent.putExtra(ItemDetails.ITEM_ID, l + "");
                 intent.putExtra(ItemDetails.ITEM_NAME, name);
                 intent.putExtra(ItemDetails.ITEM_UNIT, unit);
                 intent.putExtra(ItemDetails.ITEM_QUANTITY, quantity);
@@ -110,6 +109,7 @@ public class ItemList extends AppCompatActivity {
             }
         });
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -123,8 +123,8 @@ public class ItemList extends AppCompatActivity {
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_1,
                 cursor,
-                new String[] {"itemName"},
-                new int[] {android.R.id.text1});
+                new String[]{"itemName"},
+                new int[]{android.R.id.text1});
         food_items.setAdapter(adapter);
     }
 

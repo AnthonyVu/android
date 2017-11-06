@@ -15,10 +15,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-/**
- * Created by Anthony Vu on 10/31/2017.
- */
-
 public class CreateItem extends AppCompatActivity {
     public static final String EVENT_ID= "createItem.eventId";
 

@@ -18,10 +18,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * Created by Anthony Vu on 11/1/2017.
- */
-
 public class Contribution extends AppCompatActivity {
 
     public static final String ITEM_ID = "itemID";

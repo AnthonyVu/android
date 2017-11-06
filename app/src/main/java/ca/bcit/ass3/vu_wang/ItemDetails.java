@@ -12,10 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-/**
- * Created by Anthony Vu on 11/1/2017.
- */
-
 public class ItemDetails extends AppCompatActivity {
     public static final String ITEM_ID = "itemDetails.id";
     public static final String ITEM_NAME = "itemDetails.name";
@@ -53,9 +49,12 @@ public class ItemDetails extends AppCompatActivity {
         quantity = getIntent().getStringExtra(ITEM_QUANTITY);
         eventId = getIntent().getStringExtra(ITEM_EVENT_ID);
 
-        itemName.setText("Item: " + name);
-        itemUnit.setText("Unit: " + unit);
-        itemQuantity.setText("Quantity left to purchase: " + quantity);
+        itemName.setText(String.format(
+                getResources().getString(R.string.itemLocale), name));
+        itemUnit.setText(String.format(
+                getResources().getString(R.string.unitLocale), unit));
+        itemQuantity.setText(String.format(
+                getResources().getString(R.string.quantityRemainingLocale), quantity));
 
         deleteItemButton.setOnClickListener(new View.OnClickListener() {
             @Override

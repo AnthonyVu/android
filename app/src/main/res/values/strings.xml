@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Vu_Wang</string>
+
+    <string name="eventNameLocale">Event Name: %s</string>
+    <string name="eventDateLocale">Event Date: %s</string>
+    <string name="eventTimeLocale">Event Time: %s</string>
+
+    <string name="itemLocale">Item: %s</string>
+    <string name="unitLocale">Unit: %s</string>
+    <string name="quantityRemainingLocale">Quantity Left to Purchase: %s</string>
+
+    <string name="selectTableLabel">Select Table</string>
 </resources>

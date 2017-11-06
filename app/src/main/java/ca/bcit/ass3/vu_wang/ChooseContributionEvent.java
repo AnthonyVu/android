@@ -14,10 +14,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-/**
- * Created by Anthony Vu on 11/1/2017.
- */
-
 public class ChooseContributionEvent extends AppCompatActivity {
 
     private SQLiteDatabase db;
