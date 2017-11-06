@@ -17,7 +17,7 @@
     <string name="name">Name</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
-    <string name="warning">Note: not case-sensitive</string>
+    <string name="warning">Note: case-sensitive</string>
     <string name="searchForEvent">Search For an Event</string>
     <string name="search">Search</string>
     <string name="found">Found Events</string>
