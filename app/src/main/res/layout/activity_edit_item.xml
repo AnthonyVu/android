@@ -6,32 +6,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="Edit Item"
+        android:text="@string/editItemLabel"
         android:gravity="center"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/itemName"
-        android:hint="Item Name"/>
+        android:hint="@string/itemNameHint"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/unit"
-        android:hint="Units"/>
+        android:hint="@string/unitsHint"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/quantity"
-        android:hint="Quantity"/>
+        android:hint="@string/quantityHint"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/saveButton"
-        android:text="Save"/>
+        android:text="@string/saveLabel"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cancelButton"
-        android:text="Cancel"/>
+        android:text="@string/cancelLabel"/>
 </LinearLayout>

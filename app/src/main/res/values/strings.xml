@@ -4,10 +4,42 @@
     <string name="eventNameLocale">Event Name: %s</string>
     <string name="eventDateLocale">Event Date: %s</string>
     <string name="eventTimeLocale">Event Time: %s</string>
-
     <string name="itemLocale">Item: %s</string>
     <string name="unitLocale">Unit: %s</string>
-    <string name="quantityRemainingLocale">Quantity Left to Purchase: %s</string>
 
+    <string name="itemsLabel">Items: </string>
+
+    <string name="quantityRemainingLocale">Quantity Left to Purchase: %s</string>
     <string name="selectTableLabel">Select Table</string>
+    <string name="eventsLabel">Events</string>
+    <string name="foundEventsLabel">Found Events</string>
+    <string name="searchForEventLabel">Search For an Event</string>
+    <string name="eventDetailsLabel">Event Details</string>
+    <string name="createEventLabel">Create Event</string>
+    <string name="editEventLabel">Edit Event</string>
+    <string name="deleteEventLabel">Delete Event</string>
+    <string name="addItemsLabel">Add Items</string>
+    <string name="editItemLabel">Edit Item</string>
+    <string name="itemDetailsLabel">Item Details</string>
+    <string name="deleteItemLabel">Delete Item</string>
+    <string name="viewDatabaseLabel">View Database</string>
+    <string name="selectItemContributionLabel">Select Item to Contribute to: </string>
+    <string name="selectEventContributionLabel">Select Event to Contribute to: </string>
+
+    <string name="searchLabel">Search</string>
+    <string name="cancelLabel">Cancel</string>
+    <string name="saveLabel">Save</string>
+    <string name="addLabel">Add</string>
+    <string name="doneLabel">Done</string>
+
+    <string name="notCaseSensitiveNote">Note: Not Case-Sensitive</string>
+
+    <string name="nameHint">Name</string>
+    <string name="eventHint">Event</string>
+    <string name="itemNameHint">Item Name</string>
+    <string name="unitsHint">Units</string>
+    <string name="quantityHint">Quantity</string>
+    <string name="dateHint">Date</string>
+    <string name="timeHint">Time</string>
+    <string name="amountHint">Amount</string>
 </resources>

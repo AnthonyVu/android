@@ -26,16 +26,16 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="amount"
+        android:hint="@string/amountHint"
         android:id="@+id/amount"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/addButton"
-        android:text="Add" />
+        android:text="@string/addLabel" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cancelButton"
-        android:text="Cancel"/>
+        android:text="@string/cancelLabel"/>
 </LinearLayout>

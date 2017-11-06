@@ -6,36 +6,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="Create Event"
+        android:text="@string/createEventLabel"
         android:gravity="center"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/name"
-        android:hint="Name"/>
+        android:hint="@string/nameHint"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/date"
-        android:hint="Date"/>
+        android:inputType="date"
+        android:hint="@string/dateHint"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/time"
-        android:hint="Time"/>
+        android:hint="@string/timeHint"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/doneButton"
-        android:text="Done"/>
+        android:text="@string/doneLabel"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cancelButton"
-        android:text="Cancel"/>
+        android:text="@string/cancelLabel"/>
 </LinearLayout>

@@ -7,15 +7,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/deleteButton"
-        android:text="Delete item"
-        android:layout_gravity="right"/>
+        android:text="@string/deleteItemLabel"
+        android:layout_gravity="end"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:gravity="center"
-        android:text="Item Details"/>
+        android:text="@string/itemDetailsLabel"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editButton"
-        android:text="Edit Item"
-        android:layout_gravity="right"/>
+        android:text="@string/editItemLabel"
+        android:layout_gravity="end"/>
 
 </LinearLayout>
