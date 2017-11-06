@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by Anthony Vu on 10/31/2017.
@@ -31,6 +32,9 @@ public class CreateItem extends AppCompatActivity {
     private ContentValues itemValues;
 
     private long ID;
+    private boolean checkOne;
+    private boolean checkTwo;
+    private boolean checkThree;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +48,9 @@ public class CreateItem extends AppCompatActivity {
         cancelButton = (Button)findViewById(R.id.cancelButton);
         SQLiteOpenHelper helper = new DatabaseHelper(this);
         db = helper.getWritableDatabase();
+        checkOne = false;
+        checkTwo = false;
+        checkThree = false;
         itemName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -52,7 +59,13 @@ public class CreateItem extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                itemValues.put("itemName", charSequence.toString());
+                if(charSequence.length() == 0) {
+                    checkOne = false;
+                } else {
+                    itemValues.put(DatabaseHelper.ITEMNAME, charSequence.toString());
+                    checkOne = true;
+                }
+
             }
 
             @Override
@@ -69,7 +82,13 @@ public class CreateItem extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                itemValues.put("Unit", charSequence.toString());
+                if(charSequence.length() == 0) {
+                    checkTwo = false;
+                } else {
+                    itemValues.put(DatabaseHelper.ITEMUNIT, charSequence.toString());
+                    checkTwo = true;
+                }
+
             }
 
             @Override
@@ -86,7 +105,13 @@ public class CreateItem extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                itemValues.put("Quantity", charSequence.toString());
+                if(charSequence.length() == 0) {
+                    checkThree = false;
+                } else {
+                    itemValues.put(DatabaseHelper.ITEMQUANTITY, charSequence.toString());
+                    checkThree = true;
+                }
+
             }
 
             @Override
@@ -98,9 +123,15 @@ public class CreateItem extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                itemValues.put("eventId", ID +"");
-                db.insert("EVENT_DETAIL", null, itemValues);
-                finish();
+                if(checkOne && checkTwo && checkThree) {
+                    itemValues.put(DatabaseHelper.EVENTID, ID +"");
+                    db.insert(DatabaseHelper.DETAIL, null, itemValues);
+                    finish();
+                } else {
+                    Toast.makeText(CreateItem.this, getResources().getString(R.string.fill), Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 
@@ -136,10 +167,6 @@ public class CreateItem extends AppCompatActivity {
             case R.id.search_event:
                 Intent j = new Intent(this, SearchForEvent.class);
                 startActivity(j);
-                return true;
-            case R.id.add_pledge:
-                Intent k = new Intent(this, ChooseContributionEvent.class);
-                startActivity(k);
                 return true;
             case R.id.home:
                 Intent l = new Intent(this, MainActivity.class);

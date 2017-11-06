@@ -5,33 +5,32 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="Edit Item"
-        android:gravity="center"/>
+        android:text="@string/editItem"
+        style="@style/Title"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/itemName"
-        android:hint="Item Name"/>
+        android:hint="@string/item"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/unit"
-        android:hint="Units"/>
+        android:hint="@string/unit"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/quantity"
-        android:hint="Quantity"/>
+        android:hint="@string/quantity"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/saveButton"
-        android:text="Save"/>
+        android:text="@string/save"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cancelButton"
-        android:text="Cancel"/>
+        android:text="@string/cancel"/>
 </LinearLayout>

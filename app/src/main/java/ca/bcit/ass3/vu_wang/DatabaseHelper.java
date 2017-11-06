@@ -16,9 +16,21 @@ import java.util.ArrayList;
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME = "MyPlanet.sqlite";
+    private static final String DB_NAME = "assign3.sqlite";
     private static final int DB_VERSION = 2;
     private Context context;
+
+    public static final String MASTER ="EVENT_MASTER";
+    public static final String ID = "_id";
+    public static final String EVENTNAME = "Name";
+    public static final String EVENTDATE = "Date";
+    public static final String EVENTTIME = "Time";
+
+    public static final String DETAIL = "EVENT_DETAIL";
+    public static final String ITEMNAME = "itemName";
+    public static final String ITEMUNIT = "Unit";
+    public static final String ITEMQUANTITY = "Quantity";
+    public static final String EVENTID = "eventId";
 
     public DatabaseHelper(Context context) {
         // The 3'rd parameter (null) is an advanced feature relating to cursors
@@ -41,50 +53,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (oldVersion < 1) {
                 db.execSQL(CreateEventMasterTable());
                 db.execSQL(CreateEventDetailTable());
-                db.execSQL(CreateContributionTable());
             }
         } catch (SQLException sqle) {
-            String msg = "[DatabaseHelper / updateMyDatabase/insertCountry] DB unavailable";
-            msg += "\n\n" + sqle.toString();
-            Toast t = Toast.makeText(context, msg, Toast.LENGTH_LONG);
-            t.show();
         }
     }
 
     private String CreateEventMasterTable() {
         String sql = "";
-        sql += "CREATE TABLE EVENT_MASTER (";
-        sql += "_id INTEGER PRIMARY KEY AUTOINCREMENT, ";
-        sql += "Name TEXT, ";
-        sql += "Date TEXT, ";
-        sql += "Time TEXT)";
+        sql += "CREATE TABLE " + MASTER + "(";
+        sql +=  ID + " INTEGER PRIMARY KEY AUTOINCREMENT, ";
+        sql +=  EVENTNAME + " TEXT, ";
+        sql +=  EVENTDATE + " TEXT, ";
+        sql +=  EVENTTIME + " TEXT)";
 
         return sql;
     }
 
     private String CreateEventDetailTable() {
         String sql = "";
-        sql += "CREATE TABLE EVENT_DETAIL (";
-        sql += "_id INTEGER PRIMARY KEY AUTOINCREMENT, ";
-        sql += "itemName TEXT, ";
-        sql += "Unit TEXT, ";
-        sql += "Quantity TEXT,";
-        sql += "eventId INTEGER)";
+        sql += "CREATE TABLE " + DETAIL + "(";
+        sql +=  ID + " INTEGER PRIMARY KEY AUTOINCREMENT, ";
+        sql +=  ITEMNAME + " TEXT, ";
+        sql +=  ITEMUNIT + " TEXT, ";
+        sql +=  ITEMQUANTITY + " TEXT,";
+        sql +=  EVENTID + " INTEGER)";
 
         return sql;
     }
 
-    private String CreateContributionTable() {
-        String sql = "";
-        sql += "CREATE TABLE CONTRIBUTION (";
-        sql += "_id INTEGER PRIMARY KEY AUTOINCREMENT, ";
-        sql += "Name TEXT, ";
-        sql += "Quantity TEXT, ";
-        sql += "Date TEXT,";
-        sql += "detailId INTEGER)";
-
-        return sql;
-    }
     public ArrayList<Cursor> getData(String Query){
         //get writable database
         SQLiteDatabase sqlDB = this.getWritableDatabase();

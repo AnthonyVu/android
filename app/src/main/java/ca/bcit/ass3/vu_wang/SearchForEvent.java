@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by Anthony Vu on 11/1/2017.
@@ -22,7 +23,7 @@ public class SearchForEvent extends AppCompatActivity {
     private Button searchButton;
     private Button cancelButton;
     private String event;
-
+    private boolean check;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ public class SearchForEvent extends AppCompatActivity {
         eventName = (EditText)findViewById(R.id.eventName);
         searchButton = (Button)findViewById(R.id.searchButton);
         cancelButton = (Button)findViewById(R.id.cancelButton);
+        check = false;
         eventName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -38,7 +40,13 @@ public class SearchForEvent extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                event = charSequence.toString();
+                if(charSequence.length() == 0) {
+                    check = false;
+                } else {
+                    check = true;
+                    event = charSequence.toString();
+                }
+
             }
 
             @Override
@@ -49,9 +57,14 @@ public class SearchForEvent extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), SearchedEvents.class);
-                i.putExtra(SearchedEvents.EVENT_NAME, event);
-                startActivity(i);
+                if(check) {
+                    Intent i = new Intent(view.getContext(), SearchedEvents.class);
+                    i.putExtra(SearchedEvents.EVENT_NAME, event);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(SearchForEvent.this, getResources().getString(R.string.fill), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -81,10 +94,6 @@ public class SearchForEvent extends AppCompatActivity {
             case R.id.search_event:
                 Intent j = new Intent(this, SearchForEvent.class);
                 startActivity(j);
-                return true;
-            case R.id.add_pledge:
-                Intent k = new Intent(this, ChooseContributionEvent.class);
-                startActivity(k);
                 return true;
             case R.id.home:
                 Intent l = new Intent(this, MainActivity.class);

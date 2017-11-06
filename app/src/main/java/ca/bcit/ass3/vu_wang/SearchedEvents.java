@@ -39,9 +39,9 @@ public class SearchedEvents extends AppCompatActivity {
 
         helper = new DatabaseHelper(this);
         db = helper.getReadableDatabase();
-        cursor = db.query("EVENT_MASTER",
-                new String[]{"_id", "Name"},
-                "Name = ?" ,
+        cursor = db.query(DatabaseHelper.MASTER,
+                new String[]{DatabaseHelper.ID, DatabaseHelper.EVENTNAME},
+                DatabaseHelper.EVENTNAME + " = ?" ,
                 new String[]{eventName},
                 null,
                 null, null, null);
@@ -49,7 +49,7 @@ public class SearchedEvents extends AppCompatActivity {
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_1,
                 cursor,
-                new String[] {"Name"},
+                new String[] {DatabaseHelper.EVENTNAME},
                 new int[] {android.R.id.text1});
         searchedEvents.setAdapter(adapter);
 
@@ -58,9 +58,9 @@ public class SearchedEvents extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(view.getContext(), ItemList.class);
                 db = helper.getReadableDatabase();
-                cursor = db.query("EVENT_MASTER",
-                        new String[] {"_id", "Name", "Date", "Time"},
-                        "_id = ?",
+                cursor = db.query(DatabaseHelper.MASTER,
+                        new String[] {DatabaseHelper.ID, DatabaseHelper.EVENTNAME, DatabaseHelper.EVENTDATE, DatabaseHelper.EVENTTIME},
+                        DatabaseHelper.ID + " = ?",
                         new String[] {l+""},
                         null, null, null);
 
@@ -105,10 +105,6 @@ public class SearchedEvents extends AppCompatActivity {
             case R.id.search_event:
                 Intent j = new Intent(this, SearchForEvent.class);
                 startActivity(j);
-                return true;
-            case R.id.add_pledge:
-                Intent k = new Intent(this, ChooseContributionEvent.class);
-                startActivity(k);
                 return true;
             case R.id.home:
                 Intent l = new Intent(this, MainActivity.class);

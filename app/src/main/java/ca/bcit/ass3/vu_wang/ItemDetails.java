@@ -53,15 +53,15 @@ public class ItemDetails extends AppCompatActivity {
         quantity = getIntent().getStringExtra(ITEM_QUANTITY);
         eventId = getIntent().getStringExtra(ITEM_EVENT_ID);
 
-        itemName.setText("Item: " + name);
-        itemUnit.setText("Unit: " + unit);
-        itemQuantity.setText("Quantity left to purchase: " + quantity);
+        itemName.setText(getResources().getString(R.string.item) + ": " + name);
+        itemUnit.setText(getResources().getString(R.string.unit) + ": " + unit);
+        itemQuantity.setText(getResources().getString(R.string.quantity) + ": " + quantity);
 
         deleteItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 db = helper.getWritableDatabase();
-                db.delete("EVENT_DETAIL", "_id = ?", new String[]{id});
+                db.delete(DatabaseHelper.DETAIL, DatabaseHelper.ID + " = ?", new String[]{id});
                 finish();
             }
         });
@@ -96,10 +96,6 @@ public class ItemDetails extends AppCompatActivity {
             case R.id.search_event:
                 Intent j = new Intent(this, SearchForEvent.class);
                 startActivity(j);
-                return true;
-            case R.id.add_pledge:
-                Intent k = new Intent(this, ChooseContributionEvent.class);
-                startActivity(k);
                 return true;
             case R.id.home:
                 Intent l = new Intent(this, MainActivity.class);

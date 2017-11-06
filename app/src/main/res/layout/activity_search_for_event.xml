@@ -6,19 +6,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search For an Event"
-        android:textSize="20sp"
-        android:gravity="center"/>
+        android:text="@string/searchForEvent"
+        style="@style/Title"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Note: not case-sensitive"
+        android:text="@string/warning"
         android:gravity="center"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Event"
+        android:hint="@string/eventName"
         android:id="@+id/eventName" />
 
     <RelativeLayout
@@ -29,7 +28,7 @@
             android:id="@+id/searchButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search"
+            android:text="@string/search"
             android:layout_alignParentTop="true"
             android:layout_toStartOf="@+id/cancelButton" />
 
@@ -39,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:text="Cancel" />
+            android:text="@string/cancel" />
 
     </RelativeLayout>
 
