@@ -1,37 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <TextView
+        android:id="@+id/titleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
         android:text="@string/editItemLabel"
-        android:gravity="center"/>
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/itemName"
-        android:hint="@string/itemNameHint"/>
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/itemNameHint"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+    <EditText
         android:id="@+id/unit"
-        android:hint="@string/unitsHint"/>
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/unitsHint"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemName" />
+
+    <EditText
         android:id="@+id/quantity"
-        android:hint="@string/quantityHint"/>
-    <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/quantityHint"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/unit" />
+
+    <Button
         android:id="@+id/saveButton"
-        android:text="@string/saveLabel"/>
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/saveLabel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quantity" />
+
+    <Button
         android:id="@+id/cancelButton"
-        android:text="@string/cancelLabel"/>
-</LinearLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancelLabel"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quantity" />
+</android.support.constraint.ConstraintLayout>
