@@ -5,19 +5,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/itemName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/itemNameHint"
+    <TextView
+        android:id="@+id/titleTextView"
+        style="@style/TitleText"
+        android:text="@string/createItemLabel"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/itemName"
+        style="@style/InputField"
+        android:hint="@string/itemNameHint"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+    <EditText
         android:id="@+id/unit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/InputField"
         android:hint="@string/unitsHint"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -25,8 +31,7 @@
 
     <EditText
         android:id="@+id/quantity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/InputField"
         android:hint="@string/quantityHint"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -34,16 +39,14 @@
 
     <Button
         android:id="@+id/addButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SmallButton"
         android:text="@string/addLabel"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/quantity" />
 
     <Button
         android:id="@+id/cancelButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SmallButton"
         android:text="@string/cancelLabel"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/quantity" />

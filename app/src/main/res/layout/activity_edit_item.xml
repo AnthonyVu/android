@@ -7,57 +7,46 @@
 
     <TextView
         android:id="@+id/titleTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/TitleText"
         android:text="@string/editItemLabel"
-        android:textAlignment="center"
-        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="parent" />
 
     <EditText
         android:id="@+id/itemName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/InputField"
         android:hint="@string/itemNameHint"
-        android:textAlignment="center"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView" />
 
     <EditText
         android:id="@+id/unit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/InputField"
         android:hint="@string/unitsHint"
-        android:textAlignment="center"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/itemName" />
 
     <EditText
         android:id="@+id/quantity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/InputField"
         android:hint="@string/quantityHint"
-        android:textAlignment="center"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/unit" />
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SmallButton"
         android:text="@string/saveLabel"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/quantity" />
 
     <Button
         android:id="@+id/cancelButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SmallButton"
         android:text="@string/cancelLabel"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/quantity" />

@@ -16,6 +16,7 @@
     <string name="searchForEventLabel">Search For an Event</string>
     <string name="eventDetailsLabel">Event Details</string>
     <string name="createEventLabel">Create Event</string>
+    <string name="createItemLabel">Create Item</string>
     <string name="editEventLabel">Edit Event</string>
     <string name="deleteEventLabel">Delete Event</string>
     <string name="addItemsLabel">Add Items</string>

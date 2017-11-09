@@ -7,62 +7,52 @@
     android:layout_height="match_parent">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/editButton"
+        style="@style/SmallButton"
         android:text="@string/editEventLabel"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/deleteEventButton"
+        style="@style/SmallButton"
         android:text="@string/deleteEventLabel"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="34dp"
-        android:gravity="center"
+        style="@style/TitleText"
         android:text="@string/eventDetailsLabel"
-        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/editButton"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/eventName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_toEndOf="@+id/eventDate"
+        style="@style/RegularText"
+        android:textAlignment="center"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/eventDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/RegularText"
         app:layout_constraintTop_toBottomOf="@+id/eventName"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/eventTime"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/RegularText"
         app:layout_constraintTop_toBottomOf="@+id/eventDate"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/addButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/WideButton"
         android:text="@string/addItemsLabel"
         app:layout_constraintTop_toBottomOf="@+id/eventTime"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -70,10 +60,8 @@
 
     <TextView
         android:id="@+id/itemLabelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TitleText"
         android:text="@string/itemsLabel"
-        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/addButton"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
