@@ -6,17 +6,16 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@id/titleTextView"
+        android:id="@+id/titleTextView"
         style="@style/TitleText"
-        android:text="@string/foundEventsLabel"
+        android:text="@string/selectItemContributionLabel"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/searchedEvents"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/itemList"
+        style="@style/TitleText"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView" />
