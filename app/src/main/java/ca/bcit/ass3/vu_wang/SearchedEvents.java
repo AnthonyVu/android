@@ -1,85 +1,30 @@
 package ca.bcit.ass3.vu_wang;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 
 public class SearchedEvents extends AppCompatActivity {
 
     public static final String EVENT_NAME = "SearchedEvents.name";
-    private String eventName;
-    private ListView searchedEvents;
-    private SQLiteDatabase db;
-    private SQLiteOpenHelper helper;
-    private Cursor cursor;
-
-    private String name;
-    private String date;
-    private String time;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searched_events);
-        eventName = getIntent().getStringExtra(EVENT_NAME);
-        searchedEvents = (ListView)findViewById(R.id.searchedEvents);
 
-        helper = new DatabaseHelper(this);
-        db = helper.getReadableDatabase();
-        cursor = db.query(DatabaseHelper.MASTER,
-                new String[]{DatabaseHelper.ID, DatabaseHelper.EVENTNAME},
-                DatabaseHelper.EVENTNAME + " = ?" ,
-                new String[]{eventName},
-                null,
-                null, null, null);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-                R.layout.list_item_layout,
-                cursor,
-                new String[] {DatabaseHelper.EVENTNAME},
-                new int[] {R.id.list_content});
-        searchedEvents.setAdapter(adapter);
+        Fragment searchedEventsFragment = new SearchedEventsFragment();
+        fragmentTransaction.replace(R.id.searchedEventsPane, searchedEventsFragment);
 
-        searchedEvents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(view.getContext(), ItemList.class);
-                db = helper.getReadableDatabase();
-                cursor = db.query(DatabaseHelper.MASTER,
-                        new String[] {DatabaseHelper.ID, DatabaseHelper.EVENTNAME, DatabaseHelper.EVENTDATE, DatabaseHelper.EVENTTIME},
-                        DatabaseHelper.ID + " = ?",
-                        new String[] {l+""},
-                        null, null, null);
-
-                // move to the first record
-                if (cursor.moveToFirst()) {
-                    // get the country details from the cursor
-                    name = cursor.getString(1);
-                    date = cursor.getString(2);
-                    time = cursor.getString(3);
-                }
-                intent.putExtra(ItemList.ID, l);
-                intent.putExtra(ItemList.EVENT_NAME, name);
-                intent.putExtra(ItemList.EVENT_DATE, date);
-                intent.putExtra(ItemList.EVENT_TIME, time);
-                startActivity(intent);
-            }
-        });
-    }
-
-    protected void onDestroy() {
-        super.onDestroy();
-        cursor.close();
-        db.close();
+        fragmentTransaction.commit();
     }
 
     @Override

@@ -43,7 +43,8 @@ public class EventDetailsFragment extends Fragment {
                 db = helper.getWritableDatabase();
                 db.delete(DatabaseHelper.MASTER, DatabaseHelper.ID + " = ?", new String[]{id+""});
                 db.delete(DatabaseHelper.DETAIL, DatabaseHelper.EVENTID + " = ?", new String[]{id+""});
-//                finish();
+                startActivity(new Intent(getActivity(), MainActivity.class));
+                getActivity().finish();
             }
         });
 
@@ -54,7 +55,6 @@ public class EventDetailsFragment extends Fragment {
                 Intent i = new Intent(view.getContext(), EditEvent.class);
                 i.putExtra(EditEvent.EVENT_ID, id + "");
                 startActivity(i);
-//                finish();
             }
         });
 
