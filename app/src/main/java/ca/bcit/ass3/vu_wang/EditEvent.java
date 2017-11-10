@@ -1,140 +1,29 @@
 package ca.bcit.ass3.vu_wang;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 public class EditEvent extends AppCompatActivity {
     public static final String EVENT_ID = "EditEvent.eventId";
 
-    private SQLiteDatabase db;
-    private EditText name;
-    private EditText date;
-    private EditText time;
-    private Button saveButton;
-    private Button cancelButton;
-    private ContentValues values;
-
-    private String eventId;
-    private boolean checkOne;
-    private boolean checkTwo;
-    private boolean checkThree;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_event);
-        values = new ContentValues();
-        name = (EditText)findViewById(R.id.name);
-        date = (EditText)findViewById(R.id.date);
-        time = (EditText)findViewById(R.id.time);
-        saveButton = (Button)findViewById(R.id.saveButton);
-        cancelButton = (Button)findViewById(R.id.cancelButton);
-        SQLiteOpenHelper helper = new DatabaseHelper(this);
-        db = helper.getWritableDatabase();
-        eventId = getIntent().getStringExtra(EVENT_ID);
-        checkOne = false;
-        checkTwo = false;
-        checkThree = false;
-        name.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(charSequence.length() == 0) {
-                    checkOne = false;
-                } else {
-                    values.put(DatabaseHelper.EVENTNAME, charSequence.toString());
-                    checkOne = true;
-                }
-            }
+        Fragment editEventFragment = new EditEventFragment();
+        fragmentTransaction.replace(R.id.editEventPane, editEventFragment);
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        date.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(charSequence.length() == 0) {
-                    checkTwo = false;
-                } else {
-                    values.put(DatabaseHelper.EVENTDATE, charSequence.toString());
-                    checkTwo = true;
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        time.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(charSequence.length() == 0) {
-                    checkThree = false;
-                } else {
-                    values.put(DatabaseHelper.EVENTTIME, charSequence.toString());
-                    checkThree = true;
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(checkOne && checkTwo && checkThree) {
-                    db.update(DatabaseHelper.MASTER, values, DatabaseHelper.ID + " = ?", new String[]{eventId});
-                    finish();
-                } else {
-                    Toast.makeText(EditEvent.this, getResources().getString(R.string.fill), Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
-
-    protected void onDestroy() {
-        super.onDestroy();
-        db.close();
+        fragmentTransaction.commit();
     }
 
     @Override
