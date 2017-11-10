@@ -1,53 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/titleTextView"
-        style="@style/TitleText"
-        android:text="@string/createItemLabel"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:id="@+id/createItemPane"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-    <EditText
-        android:id="@+id/itemName"
-        style="@style/InputField"
-        android:hint="@string/itemNameHint"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
-
-    <EditText
-        android:id="@+id/unit"
-        style="@style/InputField"
-        android:hint="@string/unitsHint"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/itemName" />
-
-    <EditText
-        android:id="@+id/quantity"
-        style="@style/InputField"
-        android:hint="@string/quantityHint"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/unit" />
-
-    <Button
-        android:id="@+id/addButton"
-        style="@style/SmallButton"
-        android:text="@string/addLabel"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/quantity" />
-
-    <Button
-        android:id="@+id/cancelButton"
-        style="@style/SmallButton"
-        android:text="@string/cancelLabel"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/quantity" />
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
