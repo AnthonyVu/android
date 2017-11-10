@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/titleTextView"
+        style="@style/TitleText"
         android:text="@string/searchForEventLabel"
-        android:textSize="20sp"
-        android:gravity="center"/>
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/notCaseSensitiveNote"
-        android:gravity="center"/>
+        android:id="@+id/subtitleTextView"
+        style="@style/RegularText"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/notCaseSensitiveNote" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/eventHint"
-        android:id="@+id/eventName" />
+        android:id="@+id/eventName"
+        style="@style/InputField"
+        app:layout_constraintTop_toBottomOf="@id/subtitleTextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:hint="@string/eventHint" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/searchButton"
+        style="@style/SmallButton"
+        app:layout_constraintTop_toBottomOf="@id/eventName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="@string/searchLabel" />
 
-        <Button
-            android:id="@+id/searchButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/searchLabel"
-            android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/cancelButton" />
+    <Button
+        android:id="@+id/cancelButton"
+        style="@style/SmallButton"
+        app:layout_constraintTop_toBottomOf="@id/eventName"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/cancelLabel" />
 
-        <Button
-            android:id="@+id/cancelButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:text="@string/cancelLabel" />
-
-    </RelativeLayout>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

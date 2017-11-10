@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class CreateEvent extends AppCompatActivity {
     private SQLiteDatabase db;
@@ -23,6 +24,9 @@ public class CreateEvent extends AppCompatActivity {
     private Button doneButton;
     private Button cancelButton;
     private ContentValues values;
+    private boolean checkOne;
+    private boolean checkTwo;
+    private boolean checkThree;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,9 @@ public class CreateEvent extends AppCompatActivity {
         name = (EditText)findViewById(R.id.name);
         date = (EditText)findViewById(R.id.date);
         time = (EditText)findViewById(R.id.time);
+        checkOne = false;
+        checkTwo = false;
+        checkThree = false;
         doneButton = (Button)findViewById(R.id.doneButton);
         cancelButton = (Button)findViewById(R.id.cancelButton);
         SQLiteOpenHelper helper = new DatabaseHelper(this);
@@ -43,7 +50,12 @@ public class CreateEvent extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                values.put("Name", charSequence.toString());
+                if(charSequence.length() == 0) {
+                    checkOne = false;
+                } else {
+                    values.put(DatabaseHelper.EVENTNAME, charSequence.toString());
+                    checkOne = true;
+                }
             }
 
             @Override
@@ -60,7 +72,12 @@ public class CreateEvent extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                values.put("Date", charSequence.toString());
+                if(charSequence.length() == 0) {
+                    checkTwo = false;
+                } else {
+                    values.put(DatabaseHelper.EVENTDATE, charSequence.toString());
+                    checkTwo = true;
+                }
             }
 
             @Override
@@ -77,7 +94,12 @@ public class CreateEvent extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                values.put("Time", charSequence.toString());
+                if(charSequence.length() == 0) {
+                    checkThree = false;
+                } else {
+                    values.put(DatabaseHelper.EVENTTIME, charSequence.toString());
+                    checkThree = true;
+                }
             }
 
             @Override
@@ -88,8 +110,12 @@ public class CreateEvent extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.insert("EVENT_MASTER", null, values);
-                finish();
+                if(checkOne && checkTwo && checkThree) {
+                    db.insert(DatabaseHelper.MASTER, null, values);
+                    finish();
+                } else {
+                    Toast.makeText(CreateEvent.this, getResources().getString(R.string.fill), Toast.LENGTH_SHORT).show();
+                }
             }
         });
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -124,10 +150,6 @@ public class CreateEvent extends AppCompatActivity {
             case R.id.search_event:
                 Intent j = new Intent(this, SearchForEvent.class);
                 startActivity(j);
-                return true;
-            case R.id.add_pledge:
-                Intent k = new Intent(this, ChooseContributionEvent.class);
-                startActivity(k);
                 return true;
             case R.id.home:
                 Intent l = new Intent(this, MainActivity.class);

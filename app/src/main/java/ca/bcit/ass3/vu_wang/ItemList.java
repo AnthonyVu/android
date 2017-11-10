@@ -56,8 +56,8 @@ public class ItemList extends AppCompatActivity {
         deleteEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.delete("EVENT_MASTER", "_id = ?", new String[]{id + ""});
-                db.delete("EVENT_DETAIL", "eventId = ?", new String[]{id + ""});
+                db.delete(DatabaseHelper.MASTER, DatabaseHelper.ID + " = ?", new String[]{id+""});
+                db.delete(DatabaseHelper.DETAIL, DatabaseHelper.EVENTID + " = ?", new String[]{id+""});
                 finish();
             }
         });
@@ -71,25 +71,22 @@ public class ItemList extends AppCompatActivity {
                 finish();
             }
         });
-        eventName = (TextView) findViewById(R.id.eventName);
-        eventName.setText(String.format(getResources().getString(R.string.eventNameLocale),
-                getIntent().getStringExtra(EVENT_NAME)));
-        eventDate = (TextView) findViewById(R.id.eventDate);
-        eventDate.setText(String.format(getResources().getString(R.string.eventDateLocale),
-                getIntent().getStringExtra(EVENT_DATE)));
-        eventTime = (TextView) findViewById(R.id.eventTime);
-        eventTime.setText(String.format(getResources().getString(R.string.eventTimeLocale),
-                getIntent().getStringExtra(EVENT_TIME)));
-        food_items = (ListView) findViewById(R.id.foodItems);
+        eventName = (TextView)findViewById(R.id.eventName);
+        eventName.setText(getResources().getString(R.string.eventNameLocale) + ": " + getIntent().getStringExtra(EVENT_NAME));
+        eventDate = (TextView)findViewById(R.id.eventDate);
+        eventDate.setText(getResources().getString(R.string.eventDateLocale) + ": " + getIntent().getStringExtra(EVENT_DATE));
+        eventTime = (TextView)findViewById(R.id.eventTime);
+        eventTime.setText(getResources().getString(R.string.eventTimeLocale) + ": " + getIntent().getStringExtra(EVENT_TIME));
+        food_items = (ListView)findViewById(R.id.foodItems);
         food_items.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(ItemList.this, ItemDetails.class);
                 db = helper.getReadableDatabase();
-                cursor = db.query("EVENT_DETAIL",
-                        new String[]{"_id", "itemName", "Unit", "Quantity", "eventId"},
-                        "_id = ?",
-                        new String[]{l + ""},
+                cursor = db.query(DatabaseHelper.DETAIL,
+                        new String[] {DatabaseHelper.ID, DatabaseHelper.ITEMNAME, DatabaseHelper.ITEMUNIT, DatabaseHelper.ITEMQUANTITY, DatabaseHelper.EVENTID},
+                        DatabaseHelper.ID + " = ?",
+                        new String[] {l+""},
                         null, null, null);
 
                 // move to the first record
@@ -114,17 +111,17 @@ public class ItemList extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         db = helper.getReadableDatabase();
-        cursor = db.query("EVENT_DETAIL",
-                new String[]{"_id", "itemName"},
-                "eventId = ?",
+        cursor = db.query(DatabaseHelper.DETAIL,
+                new String[]{DatabaseHelper.ID, DatabaseHelper.ITEMNAME},
+                DatabaseHelper.EVENTID + " = ?",
                 new String[]{id + ""},
                 null, null, null);
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-                android.R.layout.simple_list_item_1,
+                R.layout.list_item_layout,
                 cursor,
-                new String[]{"itemName"},
-                new int[]{android.R.id.text1});
+                new String[] {DatabaseHelper.ITEMNAME},
+                new int[] {R.id.list_content});
         food_items.setAdapter(adapter);
     }
 
@@ -147,10 +144,6 @@ public class ItemList extends AppCompatActivity {
             case R.id.search_event:
                 Intent j = new Intent(this, SearchForEvent.class);
                 startActivity(j);
-                return true;
-            case R.id.add_pledge:
-                Intent k = new Intent(this, ChooseContributionEvent.class);
-                startActivity(k);
                 return true;
             case R.id.home:
                 Intent l = new Intent(this, MainActivity.class);
