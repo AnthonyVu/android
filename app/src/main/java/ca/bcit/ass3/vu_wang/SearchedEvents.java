@@ -43,10 +43,10 @@ public class SearchedEvents extends AppCompatActivity {
                 null, null, null);
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-                android.R.layout.simple_list_item_1,
+                R.layout.list_item_layout,
                 cursor,
                 new String[] {DatabaseHelper.EVENTNAME},
-                new int[] {android.R.id.text1});
+                new int[] {R.id.list_content});
         searchedEvents.setAdapter(adapter);
 
         searchedEvents.setOnItemClickListener(new AdapterView.OnItemClickListener() {

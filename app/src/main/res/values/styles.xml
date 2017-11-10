@@ -3,13 +3,13 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#995544</item>
-        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:colorBackground">@color/colorBackground</item>
     </style>
 
-    <style name="RegularText">
+    <style name="RegularText" parent="android:TextAppearance.Widget.TextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAlignment">center</item>
@@ -17,14 +17,14 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="LabelText">
+    <style name="LabelText" parent="android:TextAppearance.Widget.TextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="TitleText">
+    <style name="TitleText" parent="android:TextAppearance.Widget.TextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorTextAccent</item>
@@ -47,10 +47,27 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="InputField">
+    <style name="InputField" parent="android:Theme.InputMethod">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Lists" parent="android:Widget.ListView">
+        <item name="android:divider">@color/colorPrimaryDark</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:listSelector">@color/colorTextAccent</item>
+    </style>
+
+    <style name="ListContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:background">@drawable/list_selector</item>
     </style>
 </resources>

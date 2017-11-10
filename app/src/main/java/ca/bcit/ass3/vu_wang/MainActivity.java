@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private SQLiteDatabase db;
     private Cursor cursor;
     private ListView list_events;
-    private Button viewDatabaseButton;
     private SQLiteOpenHelper helper;
     private String name;
     private String date;
@@ -70,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
                 null, null, null);
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-                android.R.layout.simple_list_item_1,
+                R.layout.list_item_layout,
                 cursor,
                 new String[] {DatabaseHelper.EVENTNAME},
-                new int[] {android.R.id.text1});
+                new int[] {R.id.list_content});
         list_events.setAdapter(adapter);
     }
 
