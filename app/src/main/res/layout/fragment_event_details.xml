@@ -1,0 +1,56 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="ca.bcit.ass3.vu_wang.EventDetailsFragment">
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/TitleText"
+        android:text="@string/eventDetailsLabel"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/eventName"
+        style="@style/RegularText"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/eventDate"
+        style="@style/RegularText"
+        app:layout_constraintTop_toBottomOf="@+id/eventName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/eventTime"
+        style="@style/RegularText"
+        app:layout_constraintTop_toBottomOf="@+id/eventDate"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/editButton"
+        style="@style/SmallButton"
+        android:layout_width="0dp"
+        android:text="@string/editEventLabel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/deleteEventButton"
+        app:layout_constraintTop_toBottomOf="@+id/eventTime" />
+
+    <Button
+        android:id="@+id/deleteEventButton"
+        style="@style/SmallButton"
+        android:layout_width="0dp"
+        android:text="@string/deleteEventLabel"
+        app:layout_constraintLeft_toRightOf="@+id/editButton"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eventTime" />
+
+</android.support.constraint.ConstraintLayout>
