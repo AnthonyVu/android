@@ -32,15 +32,19 @@
     <Button
         android:id="@+id/searchButton"
         style="@style/SmallButton"
-        app:layout_constraintTop_toBottomOf="@id/eventName"
+        android:layout_width="0dp"
+        android:text="@string/searchLabel"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="@string/searchLabel" />
+        app:layout_constraintRight_toLeftOf="@id/cancelButton"
+        app:layout_constraintTop_toBottomOf="@id/eventName" />
 
     <Button
         android:id="@+id/cancelButton"
         style="@style/SmallButton"
-        app:layout_constraintTop_toBottomOf="@id/eventName"
+        android:layout_width="0dp"
+        android:text="@string/cancelLabel"
+        app:layout_constraintLeft_toRightOf="@id/searchButton"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="@string/cancelLabel" />
+        app:layout_constraintTop_toBottomOf="@id/eventName" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,7 @@
 package ca.bcit.ass3.vu_wang;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,6 +24,9 @@ public class SearchedEvents extends AppCompatActivity {
 
         Fragment searchedEventsFragment = new SearchedEventsFragment();
         fragmentTransaction.replace(R.id.searchedEventsPane, searchedEventsFragment);
+
+        Fragment eventsFragment = new EventsFragment();
+        fragmentTransaction.replace(R.id.eventsListPane, eventsFragment);
 
         fragmentTransaction.commit();
     }

@@ -5,9 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +28,22 @@ public class EventsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
+
         helper = new DatabaseHelper(getActivity());
+        db = helper.getReadableDatabase();
+        cursor = db.query(DatabaseHelper.MASTER,
+                new String[]{DatabaseHelper.ID,DatabaseHelper.EVENTNAME},
+                null,
+                null,
+                null, null, null);
 
         list_events =  view.findViewById(R.id.list_events);
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getActivity(),
+                R.layout.list_item_layout,
+                cursor,
+                new String[] {DatabaseHelper.EVENTNAME},
+                new int[] {R.id.list_content});
+        list_events.setAdapter(adapter);
         list_events.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -58,25 +71,6 @@ public class EventsFragment extends Fragment {
         });
 
         return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        SQLiteOpenHelper helper = new DatabaseHelper(getActivity());
-        db = helper.getReadableDatabase();
-        cursor = db.query(DatabaseHelper.MASTER,
-                new String[]{DatabaseHelper.ID,DatabaseHelper.EVENTNAME},
-                null,
-                null,
-                null, null, null);
-
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getActivity(),
-                R.layout.list_item_layout,
-                cursor,
-                new String[] {DatabaseHelper.EVENTNAME},
-                new int[] {R.id.list_content});
-        list_events.setAdapter(adapter);
     }
 
     @Override
