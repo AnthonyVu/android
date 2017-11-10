@@ -5,13 +5,14 @@
         android:id="@+id/add_event"
         android:icon="@android:drawable/btn_star_big_on"
         android:title=""
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/search_event"
         android:icon="@android:drawable/ic_menu_search"
         android:title=""
-        app:showAsAction="always"/>
-    <item android:id="@+id/home"
-        android:title="Home"
-        app:showAsAction="never"/>
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/home"
+        android:title="@string/home"
+        app:showAsAction="never" />
 </menu>
