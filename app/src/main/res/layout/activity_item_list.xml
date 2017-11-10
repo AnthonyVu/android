@@ -1,78 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
 
-    <Button
-        android:id="@+id/editButton"
-        style="@style/SmallButton"
-        android:text="@string/editEventLabel"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+    <FrameLayout
+        android:id="@+id/eventDetailsPane"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2" />
 
-    <Button
-        android:id="@+id/deleteEventButton"
-        style="@style/SmallButton"
-        android:text="@string/deleteEventLabel"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+    <FrameLayout
+        android:id="@+id/itemListsPane"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 
-    <TextView
-        android:id="@+id/textView"
-        style="@style/TitleText"
-        android:text="@string/eventDetailsLabel"
-        app:layout_constraintTop_toBottomOf="@+id/editButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/eventName"
-        style="@style/RegularText"
-        android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/eventDate"
-        style="@style/RegularText"
-        app:layout_constraintTop_toBottomOf="@+id/eventName"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/eventTime"
-        style="@style/RegularText"
-        app:layout_constraintTop_toBottomOf="@+id/eventDate"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <Button
-        android:id="@+id/addButton"
-        style="@style/WideButton"
-        android:text="@string/addItemsLabel"
-        app:layout_constraintTop_toBottomOf="@+id/eventTime"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/itemLabelTextView"
-        style="@style/TitleText"
-        android:text="@string/itemsLabel"
-        app:layout_constraintTop_toBottomOf="@+id/addButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <ListView
-        android:id="@+id/foodItems"
-        style="@style/Lists"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/itemLabelTextView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

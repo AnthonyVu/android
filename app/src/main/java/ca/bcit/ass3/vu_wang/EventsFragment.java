@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-
 public class EventsFragment extends Fragment {
 
     private SQLiteDatabase db;
@@ -26,16 +25,11 @@ public class EventsFragment extends Fragment {
     private String time;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
-
         helper = new DatabaseHelper(getActivity());
+
         list_events =  view.findViewById(R.id.list_events);
         list_events.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
