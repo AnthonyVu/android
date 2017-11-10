@@ -1,86 +1,26 @@
 package ca.bcit.ass3.vu_wang;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 
 public class MainActivity extends AppCompatActivity {
-    private SQLiteDatabase db;
-    private Cursor cursor;
-    private ListView list_events;
-    private SQLiteOpenHelper helper;
-    private String name;
-    private String date;
-    private String time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        helper = new DatabaseHelper(this);
-        list_events = (ListView) findViewById(R.id.list_events);
-        list_events.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(MainActivity.this, ItemList.class);
-                db = helper.getReadableDatabase();
-                cursor = db.query(DatabaseHelper.MASTER,
-                        new String[] {DatabaseHelper.ID, DatabaseHelper.EVENTNAME, DatabaseHelper.EVENTDATE, DatabaseHelper.EVENTTIME},
-                        DatabaseHelper.ID + " = ?",
-                        new String[] {l+""},
-                        null, null, null);
 
-                // move to the first record
-                if (cursor.moveToFirst()) {
-                    // get the country details from the cursor
-                    name = cursor.getString(1);
-                    date = cursor.getString(2);
-                    time = cursor.getString(3);
-                }
-                intent.putExtra(ItemList.ID, l);
-                intent.putExtra(ItemList.EVENT_NAME, name);
-                intent.putExtra(ItemList.EVENT_DATE, date);
-                intent.putExtra(ItemList.EVENT_TIME, time);
-                startActivity(intent);
-            }
-        });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        SQLiteOpenHelper helper = new DatabaseHelper(this);
-        db = helper.getReadableDatabase();
-        cursor = db.query(DatabaseHelper.MASTER,
-                new String[]{DatabaseHelper.ID,DatabaseHelper.EVENTNAME},
-                null,
-                null,
-                null, null, null);
-
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-                R.layout.list_item_layout,
-                cursor,
-                new String[] {DatabaseHelper.EVENTNAME},
-                new int[] {R.id.list_content});
-        list_events.setAdapter(adapter);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        cursor.close();
-        db.close();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        EventsFragment fragment = new EventsFragment();
+        fragmentTransaction.replace(R.id.eventsFragment, fragment);
+        fragmentTransaction.commit();
     }
 
     @Override
