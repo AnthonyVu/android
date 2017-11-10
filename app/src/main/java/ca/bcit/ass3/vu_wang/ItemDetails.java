@@ -17,8 +17,6 @@ public class ItemDetails extends AppCompatActivity {
     public static final String ITEM_QUANTITY = "itemDetails.quantity";
     public static final String ITEM_EVENT_ID = "itemDetails.eventId";
 
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details);
