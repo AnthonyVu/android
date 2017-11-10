@@ -9,7 +9,6 @@
         android:id="@+id/addButton"
         style="@style/WideButton"
         android:text="@string/addItemsLabel"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
