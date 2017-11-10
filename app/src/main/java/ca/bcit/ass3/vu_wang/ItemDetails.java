@@ -1,16 +1,14 @@
 package ca.bcit.ass3.vu_wang;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 public class ItemDetails extends AppCompatActivity {
     public static final String ITEM_ID = "itemDetails.id";
@@ -19,58 +17,19 @@ public class ItemDetails extends AppCompatActivity {
     public static final String ITEM_QUANTITY = "itemDetails.quantity";
     public static final String ITEM_EVENT_ID = "itemDetails.eventId";
 
-    private TextView itemName;
-    private TextView itemUnit;
-    private TextView itemQuantity;
-    private Button deleteItemButton;
-    private Button editItemButton;
 
-    private String id;
-    private String name;
-    private String unit;
-    private String quantity;
-    private String eventId;
-
-    private SQLiteDatabase db;
-    private SQLiteOpenHelper helper;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details);
-        helper = new DatabaseHelper(this);
-        itemName = (TextView)findViewById(R.id.itemName);
-        itemUnit = (TextView)findViewById(R.id.itemUnit);
-        itemQuantity = (TextView)findViewById(R.id.itemQuantity);
-        deleteItemButton = (Button)findViewById(R.id.deleteButton);
-        editItemButton = (Button)findViewById(R.id.editButton);
-        id = getIntent().getStringExtra(ITEM_ID);
-        name = getIntent().getStringExtra(ITEM_NAME);
-        unit = getIntent().getStringExtra(ITEM_UNIT);
-        quantity = getIntent().getStringExtra(ITEM_QUANTITY);
-        eventId = getIntent().getStringExtra(ITEM_EVENT_ID);
 
-        itemName.setText(getResources().getString(R.string.itemLocale) + ": " + name);
-        itemUnit.setText(getResources().getString(R.string.unitLocale) + ": " + unit);
-        itemQuantity.setText(getResources().getString(R.string.quantityLocale) + ": " + quantity);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        deleteItemButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                db = helper.getWritableDatabase();
-                db.delete(DatabaseHelper.DETAIL, DatabaseHelper.ID + " = ?", new String[]{id});
-                finish();
-            }
-        });
+        Fragment itemDetailsFragment = new ItemDetailsFragment();
+        fragmentTransaction.replace(R.id.itemDetailsPane, itemDetailsFragment);
 
-        editItemButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), EditItem.class);
-                i.putExtra(EditItem.ITEM_ID, id);
-                startActivity(i);
-                finish();
-            }
-        });
+        fragmentTransaction.commit();
     }
 
     @Override
