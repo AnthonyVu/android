@@ -25,9 +25,6 @@ public class SearchedEvents extends AppCompatActivity {
         Fragment searchedEventsFragment = new SearchedEventsFragment();
         fragmentTransaction.replace(R.id.searchedEventsPane, searchedEventsFragment);
 
-        Fragment eventsFragment = new EventsFragment();
-        fragmentTransaction.replace(R.id.eventsListPane, eventsFragment);
-
         fragmentTransaction.commit();
     }
 

@@ -32,7 +32,6 @@
     <Button
         android:id="@+id/searchButton"
         style="@style/SmallButton"
-        android:layout_width="0dp"
         android:text="@string/searchLabel"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/cancelButton"
@@ -41,7 +40,6 @@
     <Button
         android:id="@+id/cancelButton"
         style="@style/SmallButton"
-        android:layout_width="0dp"
         android:text="@string/cancelLabel"
         app:layout_constraintLeft_toRightOf="@id/searchButton"
         app:layout_constraintRight_toRightOf="parent"

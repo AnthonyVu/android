@@ -38,7 +38,6 @@
     <Button
         android:id="@+id/editButton"
         style="@style/SmallButton"
-        android:layout_width="0dp"
         android:text="@string/editEventLabel"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/deleteEventButton"
@@ -47,7 +46,6 @@
     <Button
         android:id="@+id/deleteEventButton"
         style="@style/SmallButton"
-        android:layout_width="0dp"
         android:text="@string/deleteEventLabel"
         app:layout_constraintLeft_toRightOf="@+id/editButton"
         app:layout_constraintRight_toRightOf="parent"
